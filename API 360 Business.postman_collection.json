@@ -1,0 +1,2644 @@
+{
+	"info": {
+		"_postman_id": "874d044a-df5c-4d99-a288-f076e9b3cad8",
+		"name": "API 360 Business",
+		"description": "# API 360\n\n## DNS\n\n| [Добавить DNS-запись]() | `POST /directory/v1/org/{orgId}/domains/{domain}/dns` |  \n| [Получить DNS-записи домена]() | `GET /directory/v1/org/{orgId}/domains/{domain}/dns` |  \n| [Редактировать DNS-запись]() | `POST /directory/v1/org/{orgId}/domains/{domain}/dns/{recordId}` |  \n| [Удалить DNS-запись]() | `DELETE /directory/v1/org/{orgId}/domains/{domain}/dns/{recordId}` |\n\n## Антиспам\n\n| [Просмотреть белый список]() | `GET /admin/v1/org/{orgId}/mail/antispam/allowlist/ips` |  \n| [Создать белый список]() | `POST /admin/v1/org/{orgId}/mail/antispam/allowlist/ips` |  \n| [Удалить белый список]() | `DELETE /admin/v1/org/{orgId}/mail/antispam/allowlist/ips` |\n\n## Безопасность: аудит лог\n\n| [Получить аудит лог Диска]() | `GET /security/v1/org/{orgId}/audit_log/disk` |\n\n## Безопасность: двухфакторная аутентификация\n\n| [Включить 2FA]() | `POST /security/v1/org/{orgId}/domain_2fa` |  \n| [Выключить 2FA]() | `DELETE /security/v1/org/{orgId}/domain_2fa` |  \n| [Получить статус 2FA]() | `GET /security/v1/org/{orgId}/domain_2fa` |\n\n## Безопасность: настройки авторизации\n\n| [Выйти из аккаунта пользователя на всех устройствах]() | `PUT /security/v1/org/{orgId}/domain_sessions/users/{userId}/logout` |  \n| [Изменить время жизни cookie сессии]() | `POST /security/v1/org/{orgId}/domain_sessions` |  \n| [Получить время жизни cookie сессии]() | `GET /security/v1/org/{orgId}/domain_sessions` |\n\n## Безопасность: управление паролями\n\n| [Изменить параметры]() | `PUT /security/v1/org/{orgId}/domain_passwords` |  \n| [Получить параметры]() | `GET /security/v1/org/{orgId}/domain_passwords` |\n\n## Группы\n\n| [Добавить участника в группу]() | `POST /directory/v1/org/{orgId}/groups/{groupId}/members` |  \n| [Изменить параметры группы]() | `PATCH /directory/v1/org/{orgId}/groups/{groupId}` |  \n| [Изменить руководителей группы]() | `PUT /directory/v1/org/{orgId}/groups/{groupId}/admins` |  \n| [Изменить список участников группы]() | `PUT /directory/v1/org/{orgId}/groups/{groupId}/members` |  \n| [Просмотреть параметры группы]() | `GET /directory/v1/org/{orgId}/groups/{groupId}` |  \n| [Просмотреть список групп]() | `GET /directory/v1/org/{orgId}/groups` |  \n| [Просмотреть список участников группы]() | `GET /directory/v1/org/{orgId}/groups/{groupId}/members` |  \n| [Создать группу]() | `POST /directory/v1/org/{orgId}/groups` |  \n| [Удалить группу]() | `DELETE /directory/v1/org/{orgId}/groups/{groupId}` |  \n| [Удалить руководителей группы]() | `DELETE /directory/v1/org/{orgId}/groups/{groupId}/admins` |  \n| [Удалить участника группы]() | `DELETE /directory/v1/org/{orgId}/groups/{groupId}/members/{type}/{id}` |  \n| [Удалить участников группы]() | `DELETE /directory/v1/org/{orgId}/groups/{groupId}/members` |\n\n## Домены\n\n| [Добавить домен]() | `POST /directory/v1/org/{orgId}/domains` |  \n| [Получить статус подключения домена]() | `GET /directory/v1/org/{orgId}/domains/{domain}/status` |  \n| [Посмотреть список доменов]() | `GET /directory/v1/org/{orgId}/domains` |  \n| [Удалить домен]() | `DELETE /directory/v1/org/{orgId}/domains/{domain}` |\n\n## Настройки почты сотрудников\n\n| [Изменить основной адрес и подписи]() | `POST /admin/v1/org/{orgId}/mail/users/{userId}/settings/sender_info` |  \n| [Изменить статус автоматического сбора контактов]() | `POST /admin/v1/org/{orgId}/mail/users/{userId}/settings/address_book` |  \n| [Просмотреть основной адрес и подписи]() | `GET /admin/v1/org/{orgId}/mail/users/{userId}/settings/sender_info` |  \n| [Просмотреть правила автоответа и пересылки]() | `GET /admin/v1/org/{orgId}/mail/users/{userId}/settings/user_rules` |  \n| [Просмотреть статус автоматического сбора контактов]() | `GET /admin/v1/org/{orgId}/mail/users/{userId}/settings/address_book` |  \n| [Создать правило автоответа или пересылки]() | `POST /admin/v1/org/{orgId}/mail/users/{userId}/settings/user_rules` |  \n| [Удалить правило автоответа или пересылки]() | `DELETE /admin/v1/org/{orgId}/mail/users/{userId}/settings/user_rules/{ruleId}` |\n\n## Организации\n\n| [Посмотреть список организаций]() | `GET /directory/v1/org` |\n\n## Подразделения\n\n| [Добавить подразделению алиас]() | `POST /directory/v1/org/{orgId}/departments/{departmentId}/aliases` |  \n| [Изменить параметры подразделения]() | `PATCH /directory/v1/org/{orgId}/departments/{departmentId}` |  \n| [Посмотреть информацию о подразделении]() | `GET /directory/v1/org/{orgId}/departments/{departmentId}` |  \n| [Посмотреть список подразделений]() | `GET /directory/v1/org/{orgId}/departments` |  \n| [Создать подразделение]() | `POST /directory/v1/org/{orgId}/departments` |  \n| [Удалить алиас у подразделения]() | `DELETE /directory/v1/org/{orgId}/departments/{departmentId}/aliases/{alias}` |  \n| [Удалить подразделение]() | `DELETE /directory/v1/org/{orgId}/departments/{departmentId}` |\n\n## Правила обработки писем\n\n| [Изменить правила]() | `PUT /admin/v1/org/{orgId}/mail/routing/rules` |  \n| [Просмотреть правила]() | `GET /admin/v1/org/{orgId}/mail/routing/rules` |\n\n## Сервисные приложения\n\n| [Активировать функцию]() | `POST /security/v1/org/{orgId}/service_applications/activate` |  \n| [Деактивировать функцию]() | `POST /security/v1/org/{orgId}/service_applications/deactivate` |  \n| [Очистить список приложений]() | `DELETE /security/v1/org/{orgId}/service_applications` |  \n| [Просмотреть список приложений]() | `GET /security/v1/org/{orgId}/service_applications` |  \n| [Создать список приложений]() | `POST /security/v1/org/{orgId}/service_applications` |\n\n## Сотрудники\n\n| [Добавить]() | `POST /directory/v1/org/{orgId}/users` |  \n| [Добавить алиас]() | `POST /directory/v1/org/{orgId}/users/{userId}/aliases` |  \n| [Загрузить портрет]() | `PUT /directory/v1/org/{orgId}/users/{userId}/avatar` |  \n| [Изменить информацию]() | `PATCH /directory/v1/org/{orgId}/users/{userId}` |  \n| [Изменить контактную информацию]() | `PUT /directory/v1/org/{orgId}/users/{userId}/contacts` |  \n| [Просмотреть информацию]() | `GET /directory/v1/org/{orgId}/users/{userId}` |  \n| [Просмотреть список]() | `GET /directory/v1/org/{orgId}/users` |  \n| [Просмотреть статус 2FA]() | `GET /directory/v1/org/{orgId}/users/{userId}/2fa` |  \n| [Сбросить телефон для 2FA]() | `DELETE /directory/v1/org/{orgId}/users/{userId}/2fa` |  \n| [Удалить алиас]() | `DELETE /directory/v1/org/{orgId}/users/{userId}/aliases/{alias}` |  \n| [Удалить контактную информацию]() | `DELETE /directory/v1/org/{orgId}/users/{userId}/contacts` |",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17162649"
+	},
+	"item": [
+		{
+			"name": "DNS",
+			"item": [
+				{
+					"name": "Добавить DNS-запись",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// Example for TXT record:\n{\n    \"name\": \"@\",\n    \"text\": \"sample txt record\",\n    \"ttl\": \"21600\",\n    \"type\": \"TXT\"\n}\n// Full list of the fields:\n// {\n//     \"address\": string,\n//     \"exchange\": string,\n//     \"flag\": integer,\n//     \"name\": string,\n//     \"port\": integer,\n//     \"preference\": integer,\n//     \"priority\": integer,\n//     \"tag\": string,\n//     \"target\": string,\n//     \"text\": string,\n//     \"ttl\": integer,\n//     \"type\": string,\n//     \"value\": string,\n//     \"weight\": integer\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/domains/{{domain}}/dns",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domains",
+								"{{domain}}",
+								"dns"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить DNS-записи домена",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/domains/{{domain}}/dns",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domains",
+								"{{domain}}",
+								"dns"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Редактировать DNS-запись",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// The sample request for the edit TXT record:\n{\n    \"name\": \"@\",\n    \"text\": \"sample text for txt record_2\",\n    \"ttl\": \"600\",\n    \"type\": \"TXT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/domains/{{domain}}/dns/{{record_id}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domains",
+								"{{domain}}",
+								"dns",
+								"{{record_id}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить DNS-запись",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/domains/{{domain}}/dns/{{record_id}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domains",
+								"{{domain}}",
+								"dns",
+								"{{record_id}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "С помощью запросов управления DNS пользователь может редактировать DNS-записи домена, делегированного на серверы Яндекс.\n\nЕсли домен не делегирован, запросы можно использовать для добавления нужных DNS-записей для домена на серверах Яндекса для дальнейшего его делегирования.\n\nПрава для работы с DNS:\n\n- `directory:manage_dns` — управление DNS (чтение и запись)."
+		},
+		{
+			"name": "Антиспам",
+			"item": [
+				{
+					"name": "Просмотреть белый список",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/antispam/allowlist/ips",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"mail",
+								"antispam",
+								"allowlist",
+								"ips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать белый список",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"allowList\": [\n       \"192.168.0.1\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/antispam/allowlist/ips",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"mail",
+								"antispam",
+								"allowlist",
+								"ips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить белый список",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/antispam/allowlist/ips",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"mail",
+								"antispam",
+								"allowlist",
+								"ips"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис для работы с настройками антиспама.\n\nРазрешения на использование сервиса, которые доступны при настройке приложения:\n\n- `ya360_admin:mail_read_antispam_settings` — чтение настроек антиспама;\n- `ya360_admin:mail_write_antispam_settings` — управление настройками антиспама (чтение и запись).\n    \n\n## Методы\n\n| [Просмотреть белый список]() | `GET /admin/v1/org/{orgId}/mail/antispam/allowlist/ips` |\n| [Создать белый список]() | `POST /admin/v1/org/{orgId}/mail/antispam/allowlist/ips` |\n| [Удалить белый список]() | `DELETE /admin/v1/org/{orgId}/mail/antispam/allowlist/ips` |"
+		},
+		{
+			"name": "Безопасность: аудит лог",
+			"item": [
+				{
+					"name": "Получить аудит лог Диска",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"duration\": 36000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/audit_log/disk?pageSize=10&pageToken=1&beforeDate=2022-12-10T00:00:00Z&afterDate=2022-12-01T00:00:00Z&includeUids=0&excludeUids=1",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"audit_log",
+								"disk"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "10"
+								},
+								{
+									"key": "pageToken",
+									"value": "1"
+								},
+								{
+									"key": "beforeDate",
+									"value": "2022-12-10T00:00:00Z"
+								},
+								{
+									"key": "afterDate",
+									"value": "2022-12-01T00:00:00Z"
+								},
+								{
+									"key": "includeUids",
+									"value": "0"
+								},
+								{
+									"key": "excludeUids",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить аудит лог Почты",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/audit_log/mail?pageSize=10&pageToken=1&beforeDate=2022-12-10T00:00:00Z&afterDate=2022-12-01T00:00:00Z&includeUids=0&excludeUids=1",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"audit_log",
+								"mail"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "10"
+								},
+								{
+									"key": "pageToken",
+									"value": "1"
+								},
+								{
+									"key": "beforeDate",
+									"value": "2022-12-10T00:00:00Z"
+								},
+								{
+									"key": "afterDate",
+									"value": "2022-12-01T00:00:00Z"
+								},
+								{
+									"key": "includeUids",
+									"value": "0"
+								},
+								{
+									"key": "excludeUids",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис для получения истории событий в организации.\n\nРазрешения на использование сервиса, которые доступны при настройке приложения:\n\n- `ya360_security:audit_log_disk` — чтение событий аудит лога Диска.\n    \n\n## Методы\n\n| [Получить аудит лог Диска]() | `GET /security/v1/org/{orgId}/audit_log/disk` |"
+		},
+		{
+			"name": "Безопасность: двухфакторная аутентификация",
+			"item": [
+				{
+					"name": "Включить 2FA",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"duration\": 1209600,\n    \"validationMethod\": \"phone\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/domain_2fa",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domain_2fa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Выключить 2FA",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/domain_2fa",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domain_2fa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить статус 2FA",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/domain_2fa",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domain_2fa"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис для управления обязательной двухфакторной аутентификацией (2FA) пользователей домена.\n\nРазрешения на использование сервиса, которые доступны при настройке приложения:\n\n- `ya360_security:domain_2fa_write` — управление обязательной 2FA для пользователей.\n    \n\n## Методы\n\n| [Включить 2FA]() | `POST /security/v1/org/{orgId}/domain_2fa` |  \n| [Выключить 2FA]() | `DELETE /security/v1/org/{orgId}/domain_2fa` |  \n| [Получить статус 2FA]() | `GET /security/v1/org/{orgId}/domain_2fa` |"
+		},
+		{
+			"name": "Безопасность: настройки авторизации",
+			"item": [
+				{
+					"name": "Выйти из аккаунта пользователя на всех устройствах",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/domain_sessions/users/{{userId}}/logout",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domain_sessions",
+								"users",
+								"{{userId}}",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменить время жизни cookie сессии",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"authTTL\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/domain_sessions",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domain_sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить время жизни cookie сессии",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/domain_sessions",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domain_sessions"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис для управления временем жизни cookie сессий пользователей. Позволяет выйти из аккаунта пользователя на всех устройствах.\n\nРазрешения на использование сервиса, которые доступны при настройке приложения:\n\n- `ya360_security:domain_sessions_read` — чтение информации о времени жизни cookie сессий пользователей;\n- `ya360_security:domain_sessions_write` — управление временем жизни cookie сессий пользователей и авторизацией.\n    \n\n## Методы\n\n| [Выйти из аккаунта пользователя на всех устройствах]() | `PUT /security/v1/org/{orgId}/domain_sessions/users/{userId}/logout` |\n| [Изменить время жизни cookie сессии]() | `POST /security/v1/org/{orgId}/domain_sessions` |\n| [Получить время жизни cookie сессии]() | `GET /security/v1/org/{orgId}/domain_sessions` |"
+		},
+		{
+			"name": "Безопасность: управление паролями",
+			"item": [
+				{
+					"name": "Изменить параметры",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/domain_passwords",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domain_passwords"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить параметры",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/domain_passwords",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domain_passwords"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис позволяет управлять параметрами паролей пользователей организации.\n\nРазрешения на использование сервиса, которые доступны при настройке приложения:\n\n- `ya360_security:domain_passwords_read` — чтение информации о параметрах паролей пользователей;\n- `ya360_security:domain_passwords_write` — управление параметрами паролей пользователей.\n    \n\n## Методы\n\n| [Изменить параметры]() | `PUT /security/v1/org/{orgId}/domain_passwords` |\n| [Получить параметры]() | `GET /security/v1/org/{orgId}/domain_passwords` |"
+		},
+		{
+			"name": "Группы",
+			"item": [
+				{
+					"name": "Добавить участника в группу",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// Sample request add user to the group:\n{\n    \"id\": \"1\",\n    \"type\": \"user\"\n}\n// The total set of the types:\n// user: Сотрудник.\n// group: Группа.\n// department: Подразделение.\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups/{{groupId}}/members",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups",
+								"{{groupId}}",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменить параметры группы",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"adminIds\": [\n        1\n    ],\n    \"description\": \"The new group description\",\n    \"externalId\": \"The new externalId\",\n    \"label\": \"The new label\",\n    \"members\": [\n        {\n            \"id\": 2,\n            \"type\": \"user\"\n        }\n    ],\n    \"name\": \"the new group name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups/{{groupId}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups",
+								"{{groupId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменить руководителей группы",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"adminIds\": [\n        1\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups/{{groupId}}/admins",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups",
+								"{{groupId}}",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменить список участников группы",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// Sample request add user to the group:\n{\n    \"id\": \"1\",\n    \"type\": \"user\"\n}\n// The total set of the types:\n// user: Сотрудник.\n// group: Группа.\n// department: Подразделение.\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups/{{groupId}}/members",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups",
+								"{{groupId}}",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть параметры группы",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// Sample request add user to the group:\n{\n    \"id\": \"1\",\n    \"type\": \"user\"\n}\n// The total set of the types:\n// user: Сотрудник.\n// group: Группа.\n// department: Подразделение.\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups/{{groupId}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups",
+								"{{groupId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть список групп",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups?page=1&perPage=100",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perPage",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть список участников группы",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups/{{groupId}}/members",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups",
+								"{{groupId}}",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать группу",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"adminIds\": [\n        1\n    ],\n    \"description\": \"Group description\",\n    \"externalId\": \"Group externalId\",\n    \"label\": \"label_group\",\n    \"members\": [\n        {\n            \"id\": 1,\n            \"type\": \"user\"\n        }\n    ],\n    \"name\": \"Group name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить группу",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups/{{groupId}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups",
+								"{{groupId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить руководителей группы",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups/{{groupId}}/admins",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups",
+								"{{groupId}}",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить участника группы",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups/{{groupId}}//members/{{type}}/{{id}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups",
+								"{{groupId}}",
+								"",
+								"members",
+								"{{type}}",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить участников группы",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/groups/{{groupId}}//members",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"groups",
+								"{{groupId}}",
+								"",
+								"members"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис для работы с группами. Просмотр, создание, изменение и удаление.\n\nПрава доступа для работы с группами:\n\n- `directory:read_groups` — просмотр;\n- `directory:write_groups` — просмотр и изменение.\n    \n\n## Методы\n\n| [Добавить участника в группу]() | `POST /directory/v1/org/{orgId}/groups/{groupId}/members` |\n| [Изменить параметры группы]() | `PATCH /directory/v1/org/{orgId}/groups/{groupId}` |\n| [Изменить руководителей группы]() | `PUT /directory/v1/org/{orgId}/groups/{groupId}/admins` |\n| [Изменить список участников группы]() | `PUT /directory/v1/org/{orgId}/groups/{groupId}/members` |\n| [Просмотреть параметры группы]() | `GET /directory/v1/org/{orgId}/groups/{groupId}` |\n| [Просмотреть список групп]() | `GET /directory/v1/org/{orgId}/groups` |\n| [Просмотреть список участников группы]() | `GET /directory/v1/org/{orgId}/groups/{groupId}/members` |\n| [Создать группу]() | `POST /directory/v1/org/{orgId}/groups` |\n| [Удалить группу]() | `DELETE /directory/v1/org/{orgId}/groups/{groupId}` |\n| [Удалить руководителей группы]() | `DELETE /directory/v1/org/{orgId}/groups/{groupId}/admins` |\n| [Удалить участника группы]() | `DELETE /directory/v1/org/{orgId}/groups/{groupId}/members/{type}/{id}` |\n| [Удалить участников группы]() | `DELETE /directory/v1/org/{orgId}/groups/{groupId}/members` |"
+		},
+		{
+			"name": "Домены",
+			"item": [
+				{
+					"name": "Добавить домен",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"domain\": \"arbitrary_domain.ru\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/domains",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domains"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить статус подключения домена",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/domains/{{domain}}/status",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domains",
+								"{{domain}}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Посмотреть список доменов",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/domains?page=1&perPage=100",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domains"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perPage",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить домен",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/domains/{{domain}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"domains",
+								"{{domain}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "# Домены\n\nСервис для работы с доменами. Просмотр, создание, изменение и удаление. Получение статуса подключения и настроек доменов.\n\nПрава доступа для работы с доменами:\n\n- `directory:read_domains` — просмотр;\n- `directory:write_domains` — просмотр и изменение.\n    \n\n## Методы\n\n| [Добавить домен]() | `POST /directory/v1/org/{orgId}/domains` |  \n| [Получить статус подключения домена]() | `GET /directory/v1/org/{orgId}/domains/{domain}/status` |  \n| [Посмотреть список доменов]() | `GET /directory/v1/org/{orgId}/domains` |  \n| [Удалить домен]() | `DELETE /directory/v1/org/{orgId}/domains/{domain}` |"
+		},
+		{
+			"name": "Настройки почты сотрудников",
+			"item": [
+				{
+					"name": "Изменить основной адрес и подписи",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"defaultFrom\": \"Firstname Surname\",\n    \"fromName\": \"login@default_email.ru\",\n    \"signPosition\": \"bottom\",\n    \"signs\": [\n        {\n            \"emails\": [],\n            \"isDefault\": false,\n            \"text\": \"<div>-- </div><div>Best Regards!</div>\",\n            \"lang\": \"ru\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/users/{{userId}}/settings/sender_info",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"mail",
+								"users",
+								"{{userId}}",
+								"settings",
+								"sender_info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменить статус автоматического сбора контактов",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"collectAddresses\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/users/{{userId}}/settings/address_book",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"mail",
+								"users",
+								"{{userId}}",
+								"settings",
+								"address_book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть основной адрес и подписи",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/users/{{userId}}/settings/sender_info",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"mail",
+								"users",
+								"{{userId}}",
+								"settings",
+								"sender_info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть правила автоответа и пересылки",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/users/{{userId}}/settings/user_rules",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"mail",
+								"users",
+								"{{userId}}",
+								"settings",
+								"user_rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть статус автоматического сбора контактов",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/users/{{userId}}/settings/address_book",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"mail",
+								"users",
+								"{{userId}}",
+								"settings",
+								"address_book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать правило автоответа или пересылки",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"autoreply\": {\n        \"ruleName\": \"Name autoreply rule\",\n        \"text\": \"Text for the autoreply\"\n    },\n    \"forward\": {\n        \"address\": \"login@compaby_domain.ru\",\n        \"ruleName\": \"Name autoreply rule\",\n        \"withStore\": true\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/users/{{userId}}/settings/user_rules",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"mail",
+								"users",
+								"{{userId}}",
+								"settings",
+								"user_rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить правило автоответа или пересылки",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/users/{{userId}}/settings/user_rules/{{ruleId}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"mail",
+								"users",
+								"{{userId}}",
+								"settings",
+								"user_rules",
+								"{{ruleId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис для работы с настройками почтовых ящиков сотрудников. Работает для пользователей, аккаунты которых созданы на домене организации.\n\nРазрешения на использование сервиса, которые доступны при настройке приложения:\n\n- `ya360_admin:mail_read_user_settings` — чтение настроек почты пользователя;\n- `ya360_admin:mail_write_user_settings` — управление настройками почты пользователя.\n    \n\n## Методы\n\n| [Изменить основной адрес и подписи]() | `POST /admin/v1/org/{orgId}/mail/users/{userId}/settings/sender_info` |  \n| [Изменить статус автоматического сбора контактов]() | `POST /admin/v1/org/{orgId}/mail/users/{userId}/settings/address_book` |  \n| [Просмотреть основной адрес и подписи]() | `GET /admin/v1/org/{orgId}/mail/users/{userId}/settings/sender_info` |  \n| [Просмотреть правила автоответа и пересылки]() | `GET /admin/v1/org/{orgId}/mail/users/{userId}/settings/user_rules` |  \n| [Просмотреть статус автоматического сбора контактов]() | `GET /admin/v1/org/{orgId}/mail/users/{userId}/settings/address_book` |  \n| [Создать правило автоответа или пересылки]() | `POST /admin/v1/org/{orgId}/mail/users/{userId}/settings/user_rules` |  \n| [Удалить правило автоответа или пересылки]() | `DELETE /admin/v1/org/{orgId}/mail/users/{userId}/settings/user_rules/{ruleId}` |"
+		},
+		{
+			"name": "Организации",
+			"item": [
+				{
+					"name": "Посмотреть список организаций",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис для просмотра организаций пользователя.\n\nПрава доступа:\n\n- `directory:read_organization` — просмотр.\n    \n\n## Методы\n\n| [Посмотреть список организаций]() | `GET /directory/v1/org` |"
+		},
+		{
+			"name": "Подразделения",
+			"item": [
+				{
+					"name": "Добавить подразделению алиас",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"alias\": \"department_alias\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/departments/{{departmentId}}/aliases",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"departments",
+								"{{departmentId}}",
+								"aliases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменить параметры подразделения",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"New department description\",\n    \"externalId\": \"New external ID\",\n    \"headId\": 1,\n    \"label\": \"new_department_email\",\n    \"name\": \"New department name\",\n    \"parentId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/departments/{{departmentId}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"departments",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Посмотреть информацию о подразделении",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/departments/{{departmentId}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"departments",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Посмотреть список подразделений",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/departments/?page&perPage&parentId&orderBy=name",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"departments",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null
+								},
+								{
+									"key": "perPage",
+									"value": null
+								},
+								{
+									"key": "parentId",
+									"value": null
+								},
+								{
+									"key": "orderBy",
+									"value": "name",
+									"description": "id||name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать подразделение",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Department description\",\n    \"externalId\": \"some_external_id\",\n    \"headId\": 1,\n    \"label\": \"department_email\",\n    \"name\": \"Name if the department\",\n    \"parentId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/departments",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить алиас у подразделения",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/departments/{{departmentId}}/aliases/{{alias}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"departments",
+								"{{departmentId}}",
+								"aliases",
+								"{{alias}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить подразделение",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/departments/{{departmentId}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"departments",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис для работы с подразделениями. Просмотр, создание, изменение и удаление.\n\nПрава доступа для работы с подразделениями:\n\n- `directory:read_departments` — просмотр;\n- `directory:write_departments` — просмотр и изменение.\n    \n\n## Методы\n\n| [Добавить подразделению алиас]() | `POST /directory/v1/org/{orgId}/departments/{departmentId}/aliases` |\n| [Изменить параметры подразделения]() | `PATCH /directory/v1/org/{orgId}/departments/{departmentId}` |\n| [Посмотреть информацию о подразделении]() | `GET /directory/v1/org/{orgId}/departments/{departmentId}` |\n| [Посмотреть список подразделений]() | `GET /directory/v1/org/{orgId}/departments` |\n| [Создать подразделение]() | `POST /directory/v1/org/{orgId}/departments` |\n| [Удалить алиас у подразделения]() | `DELETE /directory/v1/org/{orgId}/departments/{departmentId}/aliases/{alias}` |\n| [Удалить подразделение]() | `DELETE /directory/v1/org/{orgId}/departments/{departmentId}` |"
+		},
+		{
+			"name": "Правила обработки писем",
+			"item": [
+				{
+					"name": "Изменить правила",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rules\": [\n        {\n            \"terminal\": false,\n            \"condition\": {\n                \"$and\": [\n                    {\n                        \"to\": {\n                            \"$contains\": \"group@company.ru\"\n                        }\n                    },\n                    {\n                        \"$or\": [\n                            {\n                                \"from\": {\n                                    \"$not-contains\": \" user_able_to_send_1\"\n                                }\n                            },\n                            {\n                                \"from\": {\n                                    \"$not-contains\": \" user_able_to_send_2\"\n                                }\n                            }\n                        ]\n                    }\n                ]\n            },\n            \"actions\": [\n                {\n                    \"action\": \"drop\"\n                }\n            ],\n            \"scope\": {\n                \"direction\": \"inbound\"\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/mail/routing/org/{{orgId}}/rules",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"mail",
+								"routing",
+								"org",
+								"{{orgId}}",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть правила",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/admin/v1/mail/routing/org/{{orgId}}/rules",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"admin",
+								"v1",
+								"mail",
+								"routing",
+								"org",
+								"{{orgId}}",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Инструмент для управления потоком входящих писем на уровне домена. Управление подразумевает создание специальных правил обработки писем для сотрудников организации, выполняется Администратором и определяет настройки имеющие приоритет над пользовательскими.\n\nТипичными сценариями использования являются пересылка копии писем, соответствующих определенному критерию, на заданный адрес или запрет доставки писем от определенных отправителей.\n\nУправление осуществляется на основе _**Правил**_, образованных набором _**Условий**_ и набором _**Действий**_.\n\n**Правило** — единица управления потоком писем. Конкретная инструкция, какое выполнить действие при выполнении условия.\n\n**Действие** — единица действия над письмом.\n\nВозможные значения:\n\n1. Drop — не доставлять письмо;\n2. Forward — переслать письмо.\n    \n\n**Условие** — единица проверки соответствия письма текущему правилу. [Подробное описание]().\n\n## Примеры правил:\n\n- Пересылка всей входящей почты сотрудника другому сотруднику;\n- Запрет написания писем на адрес рассылки всем, кроме `user@domain`;\n- Запрет получения писем всем сотрудникам от конкретного отправителя.\n    \n\nПрава доступа для работы с правилами:\n\n- `ya360_admin:mail_write_routing_rules` — просмотр и изменение.\n- `ya360_admin:mail_read_routing_rules` — просмотр.\n    \n\n## Методы\n\n| [Изменить правила]() | `PUT /admin/v1/org/{orgId}/mail/routing/rules` |  \n| [Просмотреть правила]() | `GET /admin/v1/org/{orgId}/mail/routing/rules` |"
+		},
+		{
+			"name": "Сервисные приложения",
+			"item": [
+				{
+					"name": "Активировать функцию",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/service_applications/activate",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"service_applications",
+								"activate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Деактивировать функцию",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/service_applications/deactivate",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"service_applications",
+								"deactivate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Очистить список приложений",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/service_applications",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"service_applications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть список приложений",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/service_applications",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"service_applications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создать список приложений",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"applications\": [\n    {\n      \"id\": \"service_application_id1\",\n      \"scopes\": [\n        \"cloud_api:disk.app_folder\",\n        \"cloud_api:disk.read\",\n        \"cloud_api:disk.write\",\n        \"cloud_api:disk.info\"\n      ]\n    },\n    {\n      \"id\": \"service_application_id2\",\n      \"scopes\": [\n        \"calendar:all\"\n      ]\n    },\n    {\n      \"id\": \"service_application_id3\",\n      \"scopes\": [\n        \"mail:imap_full\",\n        \"mail:imap_ro\",\n        \"mail:smtp\"\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/security/v1/org/{{orgId}}/service_applications",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"security",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"service_applications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Запрос в Yandex.ID на получение временного токена пользователя",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "urn:ietf:params:oauth:grant-type:token-exchange",
+									"type": "text"
+								},
+								{
+									"key": "subject_token",
+									"value": "{{user_email_service_app}}",
+									"type": "text"
+								},
+								{
+									"key": "subject_token_type",
+									"value": "urn:yandex:params:oauth:token-type:email",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{service_app_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{service_app_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "subject_token",
+									"value": "{{user_id_service_app}}",
+									"description": "Getting token by UID",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "subject_token_type",
+									"value": "urn:yandex:params:oauth:token-type:uid",
+									"description": "Getting token by UID",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://oauth.yandex.ru/token",
+							"protocol": "https",
+							"host": [
+								"oauth",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис для работы с сервисными приложениями.\n\nРазрешения на использование сервиса, которые доступны при настройке приложения:\n\n- `ya360_security:service_applications_read` — чтение списка сервисных приложений;\n- `ya360_security:service_applications_write` — управление списком сервисных приложений (чтение и запись).\n    \n\n## Методы\n\n| [Активировать функцию]() | `POST /security/v1/org/{orgId}/service_applications/activate` |\n| [Деактивировать функцию]() | `POST /security/v1/org/{orgId}/service_applications/deactivate` |\n| [Очистить список приложений]() | `DELETE /security/v1/org/{orgId}/service_applications` |\n| [Просмотреть список приложений]() | `GET /security/v1/org/{orgId}/service_applications` |\n| [Создать список приложений]() | `POST /security/v1/org/{orgId}/service_applications` |"
+		},
+		{
+			"name": "Пользователи",
+			"item": [
+				{
+					"name": "Добавить",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"about\": \"Info about account\",\n    \"birthday\": \"2000-01-01\",\n    \"contacts\": [\n        {\n            \"label\": \"work\",\n            \"type\": \"phone_extension\",\n            \"value\": \"1234\"\n        },\n        {\n            \"label\": \"private\",\n            \"type\": \"phone\",\n            \"value\": \"+799900000000\"\n        }\n    ],\n    \"departmentId\": 1,\n    \"externalId\": \"some_external_id\",\n    \"gender\": \"male\",\n    \"isAdmin\": false,\n    \"language\": \"ru\",\n    \"name\": {\n        \"first\": \"Ivan\",\n        \"last\": \"Ivanov\",\n        \"middle\": \"Ivanovitch\"\n    },\n    \"nickname\": \"ivanov_ii\",\n    \"password\": \"samlepassword@@\",\n    \"position\": \"Engineer\",\n    \"timezone\": \"Europe/Moscow\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавить алиас",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"alias\": \"email_alias\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users/{{userId}}/aliases",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users",
+								"{{userId}}",
+								"aliases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Загрузить портрет",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": ""
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users/{{userId}}/avatar",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users",
+								"{{userId}}",
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменить информацию",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"about\": \"New about\",\n    \"birthday\": \"2001-01-01\",\n    \"contacts\": [\n        {\n            \"label\": \"new_contact\",\n            \"type\": \"icq\",\n            \"value\": \"0000000\"\n        }\n    ],\n    \"departmentId\": 1,\n    \"externalId\": \"new_external_id\",\n    \"gender\": \"male\",\n    \"isAdmin\": false,\n    \"isEnabled\": true,\n    \"language\": \"ru\",\n    \"name\": {\n        \"first\": \"Petrov\",\n        \"last\": \"Petr\",\n        \"middle\": \"Petrovitch\"\n    },\n    \"password\": \"password!@\",\n    \"passwordChangeRequired\": true,\n    \"position\": \"Seniour engineer\",\n    \"timezone\": \"Europe/Moscow\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users/{{userId}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменить контактную информацию",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contacts\": [\n        {\n            \"label\": \"label_contact_1\",\n            \"type\": \"phone\",\n            \"value\": \"+7 777 000 0000\"\n        },\n        {\n            \"label\": \"label_contact_2\",\n            \"type\": \"phone_extension\",\n            \"value\": \"111-222\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users/{{userId}}/contacts",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users",
+								"{{userId}}",
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть информацию",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users/{{userId}}/",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users",
+								"{{userId}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть статус 2FA",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users/{{userId}}/2fa",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users",
+								"{{userId}}",
+								"2fa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Сбросить телефон для 2FA",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users/{{userId}}/2fa",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users",
+								"{{userId}}",
+								"2fa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить алиас",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users/{{userId}}/aliases/{alias}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users",
+								"{{userId}}",
+								"aliases",
+								"{alias}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить контактную информацию",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users/{{userId}}/contacts",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users",
+								"{{userId}}",
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить пользователя",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api360.yandex.net/directory/v1/org/{{orgId}}/users/{{user_id_delete}}",
+							"protocol": "https",
+							"host": [
+								"api360",
+								"yandex",
+								"net"
+							],
+							"path": [
+								"directory",
+								"v1",
+								"org",
+								"{{orgId}}",
+								"users",
+								"{{user_id_delete}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Сервис для работы с сотрудниками. Просмотр, создание, изменение и удаление.\n\nПрава доступа для работы с данными сотрудников:\n\n- `directory:read_users` — просмотр;\n- `directory:write_users` — просмотр и изменение.\n    \n\n## Методы\n\n| [Добавить]() | `POST /directory/v1/org/{orgId}/users` |  \n| [Добавить алиас]() | `POST /directory/v1/org/{orgId}/users/{userId}/aliases` |  \n| [Загрузить портрет]() | `PUT /directory/v1/org/{orgId}/users/{userId}/avatar` |  \n| [Изменить информацию]() | `PATCH /directory/v1/org/{orgId}/users/{userId}` |  \n| [Изменить контактную информацию]() | `PUT /directory/v1/org/{orgId}/users/{userId}/contacts` |  \n| [Просмотреть информацию]() | `GET /directory/v1/org/{orgId}/users/{userId}` |  \n| [Просмотреть список]() | `GET /directory/v1/org/{orgId}/users` |  \n| [Просмотреть статус 2FA]() | `GET /directory/v1/org/{orgId}/users/{userId}/2fa` |  \n| [Сбросить телефон для 2FA]() | `DELETE /directory/v1/org/{orgId}/users/{userId}/2fa` |  \n| [Удалить алиас]() | `DELETE /directory/v1/org/{orgId}/users/{userId}/aliases/{alias}` |  \n| [Удалить контактную информацию]() | `DELETE /directory/v1/org/{orgId}/users/{userId}/contacts` |"
+		}
+	]
+}
