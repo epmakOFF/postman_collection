@@ -1957,7 +1957,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://api360.yandex.net/admin/v1/mail/routing/org/{{orgId}}/rules",
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/routing/rules",
 							"protocol": "https",
 							"host": [
 								"api360",
@@ -1967,10 +1967,10 @@
 							"path": [
 								"admin",
 								"v1",
-								"mail",
-								"routing",
 								"org",
 								"{{orgId}}",
+								"mail",
+								"routing",
 								"rules"
 							]
 						}
@@ -1989,7 +1989,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api360.yandex.net/admin/v1/mail/routing/org/{{orgId}}/rules",
+							"raw": "https://api360.yandex.net/admin/v1/org/{{orgId}}/mail/routing/rules",
 							"protocol": "https",
 							"host": [
 								"api360",
@@ -1999,10 +1999,10 @@
 							"path": [
 								"admin",
 								"v1",
-								"mail",
-								"routing",
 								"org",
 								"{{orgId}}",
+								"mail",
+								"routing",
 								"rules"
 							]
 						}
